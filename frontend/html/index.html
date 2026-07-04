@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HRMS | Human Resource Management System</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <nav>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-users"></i>
+
+            <span>HRMS</span>
+
+        </div>
+
+
+        <div class="nav-btn" id="navBtns">
+
+            <a href="login.html" class="login" id="navLogin">Login</a>
+
+            <a href="signup.html" class="signup" id="navSignup">Sign Up</a>
+
+        </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <div class="left" data-aos="fade-right">
+
+            <span class="badge">
+
+                🚀 Smart Workforce Platform
+
+            </span>
+
+            <h1>
+
+                Nexus
+                <span>Human Resource</span>
+                Management.
+
+            </h1>
+
+            <p>
+
+                Manage employees, attendance, payroll,
+                leave requests and approvals from one secure,
+                intelligent platform.
+
+            </p>
+
+
+            <div class="stats">
+
+                <div>
+
+                    <h2>250+</h2>
+
+                    <p>Companies</p>
+
+                </div>
+
+                <div>
+
+                    <h2>20K+</h2>
+
+                    <p>Employees</p>
+
+                </div>
+
+            </div>
+
+            <div class="hero-btns">
+
+                <a href="login.html" class="btn-primary">🔐 Login</a>
+
+                <a href="signup.html" class="btn-secondary">✨ Get Started</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="right" data-aos="fade-left">
+
+            <img src="../images/bg_1.jpeg" alt="Hero Image">
+
+            <div class="floating card1">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Attendance Marked
+
+            </div>
+
+            <div class="floating card2">
+
+                <i class="fa-solid fa-wallet"></i>
+
+                Payroll Generated
+
+            </div>
+
+            <div class="floating card3">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                Leave Approved
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="../js/auth.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        (function updateNavForSession() {
+            const session = auth.getSession();
+            if (!session) return; // not logged in — show default Login/Sign Up
+
+            const dashUrl = (session.role === 'HR' || session.role === 'Administrator')
+                ? 'hr.html'
+                : 'employee.html';
+
+            const navBtns = document.getElementById('navBtns');
+            navBtns.innerHTML = `
+                <span style="font-size:14px;font-weight:500;color:#334155;align-self:center">
+                    👋 ${session.name}
+                </span>
+                <a href="${dashUrl}" class="signup">Dashboard</a>
+                <a href="#" class="login" id="landingLogout">Logout</a>
+            `;
+            document.getElementById('landingLogout').addEventListener('click', (e) => {
+                e.preventDefault();
+                auth.logout(); // clears session → redirects to login.html
+            });
+
+            const heroBtns = document.querySelector('.hero-btns');
+            if (heroBtns) {
+                heroBtns.innerHTML = `
+                    <a href="${dashUrl}" class="btn-primary">🏠 Go to Dashboard</a>
+                    <a href="#" class="btn-secondary" id="heroLogout">🚪 Logout</a>
+                `;
+                document.getElementById('heroLogout').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    auth.logout();
+                });
+            }
+        })();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Nexus HRMS</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/signup.css">
+
+</head>
+
+<body>
+
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <div class="signup-container">
+
+
+        <div class="left-panel">
+
+            <div class="brand">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h1>Nexus HRMS</h1>
+
+            </div>
+
+            <h2>
+
+                Welcome to the Future of
+
+                <span>Human Resource Management</span>
+
+            </h2>
+
+            <p>
+
+                Manage employees, attendance,
+                payroll and leave approvals from
+                one secure platform.
+
+            </p>
+
+            <div class="feature-list">
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Employee Management
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    Smart Attendance
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-wallet"></i>
+
+                    Payroll Automation
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Secure Authentication
+
+                </div>
+
+            </div>
+
+
+            <img src="../images/undraw_shared-workspace_6y9d.svg" class="illustration" alt="Signup Illustration">
+
+        </div>
+
+
+        <div class="right-panel">
+
+            <div class="form-card">
+
+                <h2>Create Account</h2>
+
+                <p>
+
+                    Join Nexus HRMS and simplify workforce management.
+
+                </p>
+
+                <form id="signupForm">
+
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input type="text" id="name" placeholder="Full Name" required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-id-card"></i>
+
+                        <input type="text" id="employeeId" placeholder="Employee ID" required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input type="email" id="email" placeholder="Company Email" required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-user-shield"></i>
+
+                        <select id="role" required>
+
+                            <option value="">Select Role</option>
+
+                            <option>Employee</option>
+
+                            <option>HR</option>
+
+                            <option>Administrator</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group password-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password" id="password" placeholder="Password" required>
+
+                        <span id="togglePassword">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="strength">
+
+                        <div class="strength-bar">
+
+                            <div id="strengthFill"></div>
+
+                        </div>
+
+                        <small id="strengthText">
+
+                            Password Strength
+
+                        </small>
+
+                    </div>
+
+                    <!-- Confirm Password -->
+
+                    <div class="input-group password-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+                        <span id="toggleConfirm">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </span>
+
+                    </div>
+
+                    <!-- Password Rules -->
+
+                    <div class="password-rules">
+
+                        <p id="ruleLength">
+
+                            ❌ Minimum 8 characters
+
+                        </p>
+
+                        <p id="ruleUpper">
+
+                            ❌ One uppercase letter
+
+                        </p>
+
+                        <p id="ruleNumber">
+
+                            ❌ One number
+
+                        </p>
+
+                        <p id="ruleSpecial">
+
+                            ❌ One special character
+
+                        </p>
+
+                    </div>
+
+                    <!-- Terms -->
+
+                    <div class="checkbox">
+
+                        <input type="checkbox" id="terms" required>
+
+                        <label for="terms">
+
+                            I agree to the
+
+                            <a href="#">Terms & Conditions</a>
+
+                        </label>
+
+                    </div>
+
+                    <!-- Button -->
+
+                    <button type="submit" class="signup-btn">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Create Secure Account
+
+                    </button>
+
+                </form>
+
+                <div class="divider">
+
+                    <span>OR</span>
+
+                </div>
+
+                <div class="login-link">
+
+                    Already have an account?
+
+                    <a href="login.html">
+
+                        Login
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Toast -->
+
+    <div id="toast">
+
+        Account Created Successfully!
+
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/signup.js"></script>
+
+</body>
+
+</html>

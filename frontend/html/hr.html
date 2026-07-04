@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXUS - HR Dashboard</title>
+
+    <link rel="stylesheet" href="../css/hr_dashboard.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logoSection">
+
+            <h1>NEXUS</h1>
+
+            <p>Human Resource Management System</p>
+
+        </div>
+
+        <div class="headerTitle">
+
+            <h2>HR Dashboard</h2>
+
+        </div>
+
+    </header>
+
+    <div class="container">
+
+        <div class="sidebar">
+
+            <div class="sidebarProfile">
+
+                <img src="image/730325432_17896600137491112_3410056717591210412_n.jpg" alt="HR">
+
+                <h3>Shiba Williams</h3>
+
+                <p>HR Manager</p>
+
+            </div>
+
+            <hr>
+
+            <ul>
+
+                <li onclick="showPage('dashboard')">
+                    🏠 Dashboard
+                </li>
+
+                <li onclick="showPage('profile')">
+                    👤 My Profile
+                </li>
+
+                <li onclick="showPage('employees')">
+                    👥 Employee Records
+                </li>
+
+                <li onclick="showPage('attendance')">
+                    📅 Attendance
+                </li>
+
+                <li onclick="showPage('leave')">
+                    📝 Leave Approval
+                </li>
+
+                <li onclick="showPage('payroll')">
+                    💰 Payroll
+                </li>
+
+
+                <li onclick="logout()">
+                    🚪 Logout
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="main">
+
+            <div id="dashboard" class="section active">
+
+                <h2>Dashboard Overview</h2>
+
+                <div class="dashboardCards">
+
+                    <div class="summaryCard">
+
+                        <h3>Total Employees</h3>
+
+                        <h1>35</h1>
+
+                    </div>
+
+                    <div class="summaryCard">
+
+                        <h3>Present Today</h3>
+
+                        <h1>30</h1>
+
+                    </div>
+
+                    <div class="summaryCard">
+
+                        <h3>Pending Leaves</h3>
+
+                        <h1>4</h1>
+
+                    </div>
+
+                    <div class="summaryCard">
+
+                        <h3>Monthly Payroll</h3>
+
+                        <h1>₹15 Lakh</h1>
+
+                    </div>
+
+                </div>
+
+                <div class="dashboardMessage">
+
+                    <h3>Today's Summary</h3>
+
+                    <p>
+
+                        Welcome back, Shiba Williams.
+
+                        There are <b>4 leave requests</b> awaiting approval.
+
+                        <br><br>
+
+                        Attendance has been marked by <b>30 employees</b> today.
+
+                        <br><br>
+
+                        Payroll records have been successfully updated for this month.
+
+                    </p>
+
+                </div>
+
+            </div>
+            <div id="profile" class="section">
+
+                <div class="card">
+
+                    <div class="profileHeader">
+
+                        <div class="profileImageSection">
+
+                            <img id="profileImage" src="image/730325432_17896600137491112_3410056717591210412_n.jpg"
+                                alt="HR Profile">
+
+                            <br><br>
+
+                            <input type="file" id="imageInput" accept="image/*" onchange="changeProfileImage()"
+                                style="display:none;">
+
+                            <button type="button" onclick="document.getElementById('imageInput').click()">
+
+                                Change Photo
+
+                            </button>
+
+                        </div>
+
+                        <div>
+
+                            <h2>Shiba Williams</h2>
+
+                            <p>HR Manager</p>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <h2>My Profile</h2>
+
+                    <div class="profileForm">
+
+                        <div class="formRow">
+
+                            <label>Employee ID</label>
+
+                            <input type="text" value="HR102" readonly>
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Full Name</label>
+
+                            <input type="text" id="hrName" value="Shiba Williams" readonly>
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Email Address</label>
+
+                            <input type="email" id="hrEmail" value="shiba.hr@nexus.com" readonly>
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Phone Number</label>
+
+                            <input type="text" id="hrPhone" value="+91 9876543210" readonly>
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Department</label>
+
+                            <input type="text" value="Human Resources" readonly>
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Designation</label>
+
+                            <input type="text" value="HR Officer" readonly>
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Address</label>
+
+                            <textarea id="hrAddress" rows="4" readonly>
+
+Kolkata, West Bengal
+
+                        </textarea>
+
+                        </div>
+
+                        <div class="buttonGroup">
+
+                            <button id="editProfileBtn" onclick="editProfile()">
+
+                                Edit Profile
+
+                            </button>
+
+                            <button id="saveProfileBtn" onclick="saveProfile()" style="display:none;">
+
+                                Save Changes
+
+                            </button>
+
+                            <button id="cancelProfileBtn" onclick="cancelProfile()" style="display:none;">
+
+                                Cancel
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="employees" class="section">
+
+                <h2>Employee Records</h2>
+
+                <div class="employeeSearch">
+
+                    <input type="text" id="searchEmployee" placeholder="Search Employee by Name or Employee ID">
+
+                    <button onclick="searchEmployee()">
+
+                        Search
+
+                    </button>
+
+                </div>
+
+                <table>
+
+                    <tr>
+
+                        <th>Employee ID</th>
+
+                        <th>Name</th>
+
+                        <th>Department</th>
+
+                        <th>Designation</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP101</td>
+
+                        <td>John Doe</td>
+
+                        <td>IT</td>
+
+                        <td>Software Developer</td>
+
+                        <td>Active</td>
+
+                        <td>
+
+                            <button onclick="editEmployee('EMP101')">
+
+                                Edit
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP102</td>
+
+                        <td>Emily Smith</td>
+
+                        <td>Finance</td>
+
+                        <td>Accountant</td>
+
+                        <td>Active</td>
+
+                        <td>
+
+                            <button onclick="editEmployee('EMP102')">
+
+                                Edit
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP103</td>
+
+                        <td>Rahul Sharma</td>
+
+                        <td>Marketing</td>
+
+                        <td>Marketing Executive</td>
+
+                        <td>On Leave</td>
+
+                        <td>
+
+                            <button onclick="editEmployee('EMP103')">
+
+                                Edit
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+                <br>
+
+                <div class="card" id="employeeEditor">
+
+                    <h2>Edit Employee Information</h2>
+
+                    <div class="profileForm">
+
+                        <div class="formRow">
+
+                            <label>Employee ID</label>
+
+                            <input type="text" id="empId" value="EMP101" readonly>
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Employee Name</label>
+
+                            <input type="text" id="empName" value="John Doe">
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Email</label>
+
+                            <input type="email" id="empEmail" value="john.doe@nexus.com">
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Phone Number</label>
+
+                            <input type="text" id="empPhone" value="+91 9876543210">
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Department</label>
+
+                            <select id="empDepartment">
+
+                                <option>IT</option>
+
+                                <option>Finance</option>
+
+                                <option>Marketing</option>
+
+                                <option>Human Resources</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Designation</label>
+
+                            <input type="text" id="empDesignation" value="Software Developer">
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Salary</label>
+
+                            <input type="number" id="empSalary" value="45000">
+
+                        </div>
+
+                        <div class="formRow">
+
+                            <label>Address</label>
+
+                            <textarea id="empAddress" rows="4">
+
+Kolkata, West Bengal
+
+                </textarea>
+
+                        </div>
+
+                        <div class="buttonGroup">
+
+                            <button onclick="saveEmployee()">
+
+                                Save Employee
+
+                            </button>
+
+                            <button onclick="resetEmployeeForm()">
+
+                                Cancel
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="attendance" class="section">
+
+                <h2>Attendance Management</h2>
+
+                <div class="employeeSearch">
+
+                    <input type="text" placeholder="Search Employee">
+
+                    <button>
+
+                        Search
+
+                    </button>
+
+                </div>
+
+                <table>
+
+                    <tr>
+
+                        <th>Employee ID</th>
+
+                        <th>Name</th>
+
+                        <th>Date</th>
+
+                        <th>Check In</th>
+
+                        <th>Check Out</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP101</td>
+
+                        <td>John Doe</td>
+
+                        <td>04 Jul 2026</td>
+
+                        <td>09:02 AM</td>
+
+                        <td>05:35 PM</td>
+
+                        <td>
+
+                            <select>
+
+                                <option selected>Present</option>
+
+                                <option>Absent</option>
+
+                                <option>Half Day</option>
+
+                                <option>Leave</option>
+
+                            </select>
+
+                        </td>
+
+                        <td>
+
+                            <button onclick="updateAttendance()">
+
+                                Update
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP102</td>
+
+                        <td>Emily Smith</td>
+
+                        <td>04 Jul 2026</td>
+
+                        <td>09:15 AM</td>
+
+                        <td>05:32 PM</td>
+
+                        <td>
+
+                            <select>
+
+                                <option selected>Present</option>
+
+                                <option>Absent</option>
+
+                                <option>Half Day</option>
+
+                                <option>Leave</option>
+
+                            </select>
+
+                        </td>
+
+                        <td>
+
+                            <button onclick="updateAttendance()">
+
+                                Update
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP103</td>
+
+                        <td>Rahul Sharma</td>
+
+                        <td>04 Jul 2026</td>
+
+                        <td>-</td>
+
+                        <td>-</td>
+
+                        <td>
+
+                            <select>
+
+                                <option>Present</option>
+
+                                <option>Absent</option>
+
+                                <option>Half Day</option>
+
+                                <option selected>Leave</option>
+
+                            </select>
+
+                        </td>
+
+                        <td>
+
+                            <button onclick="updateAttendance()">
+
+                                Update
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="leave" class="section">
+
+                <h2>Leave Approval</h2>
+
+                <table>
+
+                    <tr>
+
+                        <th>Employee ID</th>
+
+                        <th>Name</th>
+
+                        <th>Leave Type</th>
+
+                        <th>From</th>
+
+                        <th>To</th>
+
+                        <th>Reason</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP103</td>
+
+                        <td>Rahul Sharma</td>
+
+                        <td>Casual Leave</td>
+
+                        <td>10 Jul 2026</td>
+
+                        <td>12 Jul 2026</td>
+
+                        <td>Personal Work</td>
+
+                        <td id="leaveStatus1">Pending</td>
+
+                        <td>
+
+                            <button onclick="approveLeave()">
+
+                                Approve
+
+                            </button>
+
+                            <button onclick="rejectLeave()">
+
+                                Reject
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP104</td>
+
+                        <td>Neha Singh</td>
+
+                        <td>Sick Leave</td>
+
+                        <td>15 Jul 2026</td>
+
+                        <td>16 Jul 2026</td>
+
+                        <td>Medical Reason</td>
+
+                        <td>Approved</td>
+
+                        <td>
+
+                            Completed
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="payroll" class="section">
+
+                <h2>Payroll Management</h2>
+
+                <table>
+
+                    <tr>
+
+                        <th>Employee ID</th>
+
+                        <th>Name</th>
+
+                        <th>Basic Salary</th>
+
+                        <th>Bonus</th>
+
+                        <th>Net Salary</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP101</td>
+
+                        <td>John Doe</td>
+
+                        <td>
+
+                            <input type="number" value="45000">
+
+                        </td>
+
+                        <td>
+
+                            <input type="number" value="5000">
+
+                        </td>
+
+                        <td>
+
+                            ₹50,000
+
+                        </td>
+
+                        <td>
+
+                            <button onclick="updatePayroll()">
+
+                                Update
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP102</td>
+
+                        <td>Emily Smith</td>
+
+                        <td>
+
+                            <input type="number" value="40000">
+
+                        </td>
+
+                        <td>
+
+                            <input type="number" value="4000">
+
+                        </td>
+
+                        <td>
+
+                            ₹44,000
+
+                        </td>
+
+                        <td>
+
+                            <button onclick="updatePayroll()">
+
+                                Update
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    </div>
+
+    <script src="../js/hr_dashboard (1).js"></script>
+
+</body>
+
+</html>
